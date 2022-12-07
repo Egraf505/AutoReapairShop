@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vml="clr-namespace:AutoReapairShop.App.ViewModels;assembly=AutoReapairShop.App"
+             x:Class="AutoReapairShop.App.Views.HomePage"
+             Title="Главная">
+
+    <ContentPage.BindingContext>
+        <vml:HomeViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Vertical">
+            
+            <!-- Вывод даты-->
+            <HorizontalStackLayout>
+                <Button Command="{Binding DecrementDaysBtn}"/>
+                <Label Text="{Binding CurrentDate, StringFormat='{0:D}'}"/>
+                <Button Command="{Binding IncrementDaysBtn}"/>
+            </HorizontalStackLayout>
+            
+            <!-- Вывод сотрудников-->
+            <ListView ItemsSource="{Binding Masters}" SelectedItem="{Binding CurrentMaster}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding FirstName}" TextColor="White"/>
+                                    <Label Text="{Binding LastName}" TextColor="White"/>
+                                    <Label Text="{Binding Patronymic}" TextColor="White"/>
+                                    <Label Text="{Binding Email}" TextColor="White"/>
+                                    <Label Text="{Binding Phone}" TextColor="White"/>
+                                </HorizontalStackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

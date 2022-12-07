@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vml="clr-namespace:AutoReapairShop.App.ViewModels;assembly=AutoReapairShop.App"
+             x:Class="AutoReapairShop.App.Views.RecordView"
+             Title="Запись">
+
+    <ContentPage.BindingContext>
+        <vml:RecordViewModel/>
+    </ContentPage.BindingContext>
+
+    <RefreshView HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+        <ScrollView>
+            <VerticalStackLayout>
+                <Label Text="{Binding Count}"/>
+
+                <!--Вывод времени для записи-->
+                <ListView ItemsSource="{Binding Schedules}" SelectedItem="{Binding CurrentSchedule}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <FlexLayout Wrap="Wrap">
+                                        <Button Text="{Binding TimeOfWeek, StringFormat='{0:t}' }"/>
+                                    </FlexLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
