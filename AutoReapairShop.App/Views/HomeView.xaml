@@ -14,9 +14,9 @@
             
             <!-- Вывод даты-->
             <HorizontalStackLayout>
-                <Button Command="{Binding DecrementDaysBtn}"/>
+                <Button Command="{Binding DecrementDaysBtn}" Text="-"/>
                 <Label Text="{Binding CurrentDate, StringFormat='{0:D}'}"/>
-                <Button Command="{Binding IncrementDaysBtn}"/>
+                <Button Command="{Binding IncrementDaysBtn}" Text="+"/>
             </HorizontalStackLayout>
             
             <!-- Вывод сотрудников-->

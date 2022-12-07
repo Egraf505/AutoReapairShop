@@ -3,26 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vml="clr-namespace:AutoReapairShop.App.ViewModels;assembly=AutoReapairShop.App"
              x:Class="AutoReapairShop.App.Views.RecordView"
-             Title="Запись">
-
+             Title="Выберете время">
+    
     <ContentPage.BindingContext>
         <vml:RecordViewModel/>
     </ContentPage.BindingContext>
 
-    <RefreshView HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
-        <ScrollView>
-            <!--Вывод времени для записи-->
-            <ListView ItemsSource="{Binding Schedules}" SelectedItem="{Binding CurrentSchedule}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <Button Text="{Binding TimeOfWeek, StringFormat='{0:t}' }"/>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+    <RefreshView Command="{Binding PageAppearing}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <VerticalStackLayout>
+                <!--Вывод времени для записи-->
+                <ListView ItemsSource="{Binding Schedules}" SelectedItem="{Binding CurrentSchedule}"
+                      SeparatorVisibility="None"
+                      BackgroundColor="Transparent"
+                      HorizontalOptions="StartAndExpand"
+                      VerticalOptions="StartAndExpand">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding TimeOfWeek, StringFormat='{0:t}'}"/>
+                                    </VerticalStackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
         </ScrollView>
     </RefreshView>
 </ContentPage>

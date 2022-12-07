@@ -111,7 +111,7 @@ namespace AutoReapairShop.App.ViewModels
             }
             catch (Exception ex)
             {
-
+                App.Current.MainPage.DisplayAlert("Ошибка", ex.Message, "Ок");
             }
         }
 
@@ -121,7 +121,7 @@ namespace AutoReapairShop.App.ViewModels
             {
                 using garageContext garageContex = new garageContext();
 
-                var schedules = garageContex.Schedules.ToList();
+                var schedules = garageContex.Schedules.Where(x => x.FkMasterId == CurrentMaster.MasterId && x.DateOfWeek == CurrentDate && x.FkRecordId == null).ToList();
 
                 Navigation.PushAsync(new RecordView(schedules));
 
@@ -129,7 +129,7 @@ namespace AutoReapairShop.App.ViewModels
             }
             catch (Exception ex)
             {
-                
+                App.Current.MainPage.DisplayAlert("Ошибка", ex.Message, "Ок");
             }            
         }     
     }

@@ -1,4 +1,7 @@
-﻿using AutoReapairShop.DbContex.Models;
+﻿using AutoReapairShop.App.Views;
+using AutoReapairShop.DbContex.Contex;
+using AutoReapairShop.DbContex.Models;
+using DevExpress.Mvvm;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,7 +13,7 @@ namespace AutoReapairShop.App.ViewModels
     {
         public RecordViewModel()
         {
-
+            IsRefreshing= false;
         }
         public RecordViewModel(INavigation navigation)
             : this()
@@ -52,17 +55,59 @@ namespace AutoReapairShop.App.ViewModels
         public Schedule CurrentSchedule
         {
             get { return _currentSchedule; }
-            set { _currentSchedule = value; OnPropertyChanged("CurrentSchedule"); }
-        }
-        private int _count;
+            set 
+            { 
+                _currentSchedule = value;
+                if (CurrentSchedule != null)
+                    GoToPageAddRecord();
+                OnPropertyChanged("CurrentSchedule"); 
+            }
+        }  
 
-        public int Count
+        public ICommand PageAppearing
         {
-            get { return Schedules.Count; }
-            set { _count = value; OnPropertyChanged("Count"); }
+            get
+            {
+                return new Command(() =>
+                {
+                    try
+                    {
+                        IsRefreshing= true;
+                        using garageContext garageContext = new garageContext();
+
+                        if (Schedules == null)
+                        {
+                            IsRefreshing = false;
+                            return;
+                        }
+                        
+                        Schedules = new ObservableCollection<Schedule>(garageContext.Schedules.Where(x => x.FkMasterId == Schedules.First().FkMasterId && x.FkRecordId == null).ToList());
+
+                        garageContext.Dispose();
+
+                        IsRefreshing = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        App.Current.MainPage.DisplayAlert("Ошибка", ex.Message, "Ок");
+                        IsRefreshing = false;
+                    }
+                    
+                });
+            }
         }
 
+        private bool _isRefreshing;
 
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { _isRefreshing = value; OnPropertyChanged("IsRefreshing");}
+        }
 
+        private void GoToPageAddRecord()
+        {
+            Navigation.PushAsync(new AddRecordView(CurrentSchedule));
+        }
     }
 }
