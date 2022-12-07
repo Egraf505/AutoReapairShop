@@ -11,24 +11,18 @@
 
     <RefreshView HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
         <ScrollView>
-            <VerticalStackLayout>
-                <Label Text="{Binding Count}"/>
-
-                <!--Вывод времени для записи-->
-                <ListView ItemsSource="{Binding Schedules}" SelectedItem="{Binding CurrentSchedule}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <FlexLayout Wrap="Wrap">
-                                        <Button Text="{Binding TimeOfWeek, StringFormat='{0:t}' }"/>
-                                    </FlexLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </VerticalStackLayout>
+            <!--Вывод времени для записи-->
+            <ListView ItemsSource="{Binding Schedules}" SelectedItem="{Binding CurrentSchedule}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Button Text="{Binding TimeOfWeek, StringFormat='{0:t}' }"/>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollView>
     </RefreshView>
 </ContentPage>

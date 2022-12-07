@@ -9,9 +9,9 @@ namespace AutoReapairShop.DbContex.Models
         public DateOnly DateOfWeek { get; set; }
         public TimeOnly TimeOfWeek { get; set; }
         public long FkMasterId { get; set; }
-        public long FkRecordId { get; set; }
+        public long? FkRecordId { get; set; }
 
         public virtual Master FkMaster { get; set; } = null!;
-        public virtual Record? FkRecord { get; set; } = null!;
+        public virtual Record? FkRecord { get; set; }
     }
 }
