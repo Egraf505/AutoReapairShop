@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vml="clr-namespace:AutoReapairShop.App.ViewModels;assembly=AutoReapairShop.App"
              x:Class="AutoReapairShop.App.Views.HomePage"
-             Title="Главная">
+             Title="Главная" BackgroundColor="#222831">
 
     <ContentPage.BindingContext>
         <vml:HomeViewModel/>
@@ -13,25 +13,25 @@
         <StackLayout Orientation="Vertical">
             
             <!-- Вывод даты-->
-            <HorizontalStackLayout>
+            <HorizontalStackLayout BackgroundColor="#393E46">
                 <Button Command="{Binding DecrementDaysBtn}" Text="-"/>
-                <Label Text="{Binding CurrentDate, StringFormat='{0:D}'}"/>
+                <Label Text="{Binding CurrentDate, StringFormat='{0:D}'}" FontSize="18" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="#00ADB5"/>
                 <Button Command="{Binding IncrementDaysBtn}" Text="+"/>
             </HorizontalStackLayout>
             
             <!-- Вывод сотрудников-->
-            <ListView ItemsSource="{Binding Masters}" SelectedItem="{Binding CurrentMaster}">
+            <ListView ItemsSource="{Binding Masters}" SelectedItem="{Binding CurrentMaster}" HasUnevenRows="True" BackgroundColor="#393E46">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <HorizontalStackLayout Spacing="5">
-                                    <Label Text="{Binding FirstName}" TextColor="White"/>
-                                    <Label Text="{Binding LastName}" TextColor="White"/>
-                                    <Label Text="{Binding Patronymic}" TextColor="White"/>
-                                    <Label Text="{Binding Email}" TextColor="White"/>
-                                    <Label Text="{Binding Phone}" TextColor="White"/>
-                                </HorizontalStackLayout>
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding FirstName}" TextColor="#00ADB5"/>
+                                    <Label Text="{Binding LastName}" TextColor="#00ADB5"/>
+                                    <Label Text="{Binding Patronymic}" TextColor="#00ADB5"/>
+                                    <Label Text="{Binding Email}" TextColor="#00ADB5"/>
+                                    <Label Text="{Binding Phone}" TextColor="#00ADB5"/>
+                                </VerticalStackLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vml="clr-namespace:AutoReapairShop.App.ViewModels;assembly=AutoReapairShop.App"
              x:Class="AutoReapairShop.App.Views.AddRecordView"
-             Title="Заполните форму">
+             Title="Заполните форму" BackgroundColor="#222831">
 
     <ContentPage.BindingContext>
         <vml:AddRecordViewModel/>
@@ -12,16 +12,16 @@
     <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
         
         <VerticalStackLayout Spacing="10">
-            <Label Text="Заголовок"/>
-            <Entry MaxLength="200" Text="{Binding Title, Mode=TwoWay}"/>
+            <Label Text="Заголовок" TextColor="#00ADB5" FontSize="25"/>
+            <Entry MaxLength="200" Text="{Binding Title, Mode=TwoWay}" BackgroundColor="#393E46"/>
 
-            <Label Text="Марка авто"/>
-            <Entry MaxLength="200" Text="{Binding AutoMark, Mode=TwoWay}"/>
+            <Label Text="Марка авто"  TextColor="#00ADB5" FontSize="25"/>
+            <Entry MaxLength="200" Text="{Binding AutoMark, Mode=TwoWay}" BackgroundColor="#393E46"/>
 
-            <Label Text="Описание"/>
-            <Entry Text="{Binding Description, Mode=TwoWay}"/>
+            <Label Text="Описание"  TextColor="#00ADB5" FontSize="25"/>
+            <Entry Text="{Binding Description, Mode=TwoWay}" BackgroundColor="#393E46"/>
 
-            <Button Text="Записаться" Command="{Binding AddRecordBtn}"/>
+            <Button Text="Записаться" Command="{Binding AddRecordBtn}" TextColor="#00ADB5" BackgroundColor="#393E46"/>
         </VerticalStackLayout>
         
     </ScrollView>

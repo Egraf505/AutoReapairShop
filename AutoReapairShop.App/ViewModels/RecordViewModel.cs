@@ -1,7 +1,6 @@
 ﻿using AutoReapairShop.App.Views;
 using AutoReapairShop.DbContex.Contex;
 using AutoReapairShop.DbContex.Models;
-using DevExpress.Mvvm;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

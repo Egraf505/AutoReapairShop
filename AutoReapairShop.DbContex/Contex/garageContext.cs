@@ -26,7 +26,7 @@ namespace AutoReapairShop.DbContex.Contex
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql("Host=7.tcp.eu.ngrok.io;Port=14682;Database=garage;Username=postgres;Password=EfgraF_0256");
+                optionsBuilder.UseNpgsql("Host=6.tcp.eu.ngrok.io;Port=15449;Database=garage;Username=postgres;Password=EfgraF_0256");
             }
         }
 

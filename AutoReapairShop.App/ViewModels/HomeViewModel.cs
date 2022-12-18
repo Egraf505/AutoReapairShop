@@ -1,7 +1,6 @@
 ﻿using AutoReapairShop.App.Views;
 using AutoReapairShop.DbContex.Contex;
 using AutoReapairShop.DbContex.Models;
-using DevExpress.Mvvm;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
